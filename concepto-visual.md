@@ -38,6 +38,17 @@ Tomado directamente del isotipo y el logotipo.
 
 **Semánticos:** éxito `#2F7D5B`, aviso `#B7791F`, error `#B3261E`. Se usan solo para estados, nunca como decoración.
 
+**Paleta pastel (Gold Glass):** versión suave para fondos y vidrio. Los colores de marca se conservan para texto y acciones.
+
+| Nombre | Valor | Rol |
+|---|---|---|
+| Lavanda | `#CDBBE6` | Luz de fondo principal |
+| Rosa pétalo | `#F4CFE3` | Luz de fondo secundaria |
+| Champaña | `#F7E6C8` | Luz cálida de fondo |
+| Marfil | `rgba(255,248,230,.15)` | Tinte del vidrio |
+| Oro | `#D4AF37` | Bordes, brillos y estados activos |
+| Rosa orquídea | `#B04C8C` | Estado actual (versión suave del magenta) |
+
 **Proporción sugerida:** 70 % Papel/Bruma, 20 % Ciruela/Orquídea, 10 % Magenta. El magenta es escaso a propósito: señala dónde está el estudiante *ahora*.
 
 **Accesibilidad:** Ciruela sobre Papel y Orquídea sobre Papel superan 7:1. Magenta sobre Papel supera 5:1 (válido para texto).
@@ -46,7 +57,7 @@ Tomado directamente del isotipo y el logotipo.
 
 | Rol | Fuente | Notas |
 |---|---|---|
-| Títulos | **Fraunces** (600) | Serif suave y orgánica, dialoga con las curvas del logotipo |
+| Títulos | **Cormorant Garamond** (600) | Serif editorial y elegante, dialoga con la caligrafía del logotipo |
 | Interfaz y texto | **Figtree** (400/500/600) | Legible a tamaños pequeños, amable |
 | Marca | Caligrafía del logotipo | Solo como imagen, nunca para texto corrido |
 
@@ -56,7 +67,14 @@ Tomado directamente del isotipo y el logotipo.
 
 - **Tallo de semestres:** línea horizontal con un nodo por semestre. Cursado = nodo lleno ciruela; actual = nodo magenta con halo; futuro = nodo hueco lila. Es el elemento memorable del producto.
 - **Radios:** 14 px en tarjetas, 999 px en chips y botones, 8 px en campos. Los radios cambian según el rol del elemento.
-- **Contornos antes que sombras:** el isotipo está hecho de línea, así que la interfaz usa bordes de 1.5 px en Lila y reserva la sombra para menús y modales.
+- **Gold Glass (vidrio líquido dorado):** fondo en malla pastel (lavanda, rosa pétalo y champaña sobre `#F7F2FB`) con esferas de luz difusas detrás de los paneles para que la refracción se note.
+  - Desenfoque: `backdrop-filter: blur(16px) saturate(180%)`. Tinte cálido `rgba(255,248,230,.15)`, reforzado con un velo blanco `rgba(255,255,255,.5)` en paneles grandes para dar lectura.
+  - Borde dorado: degradado `linear-gradient(135deg, rgba(212,175,55,.4), rgba(255,235,180,.1), rgba(184,134,11,.3))` de 1 px, aplicado con máscara para que el interior siga translúcido.
+  - Sombra de refracción: `0 8px 32px rgba(184,134,11,.15), inset 0 1px 1px rgba(255,255,255,.6)`.
+  - Efecto líquido: filtro SVG `feTurbulence` + `feDisplacementMap` (escala 9) sobre un borde fino que dobla la luz en el contorno de los paneles principales.
+  - Controles y estados activos: brillo dorado `0 0 15px rgba(212,175,55,.5)` en hover y foco.
+  - Texto principal Ciruela `#3F1650`, secundario `#6B4A82`.
+  - Con `prefers-reduced-transparency` los paneles pasan a marfil casi opaco.
 - **Trazos del isotipo** (nervaduras, hoja, capullo) se reutilizan como ilustración de estados vacíos.
 - **Alineación:** contenido a la izquierda. Solo login, onboarding y estados vacíos van centrados.
 - **Movimiento:** una sola animación característica, el capullo que abre al completar un semestre. El resto son transiciones de 150 ms que responden a una acción. Respetar `prefers-reduced-motion`.
@@ -80,6 +98,8 @@ Tomado directamente del isotipo y el logotipo.
 - Morado genérico de "app de educación" con degradados. Aquí el morado tiene dos matices con función.
 - Mascotas, birretes y libros como iconografía. La flor ya es el símbolo.
 - Rellenar con magenta: pierde su función de señal.
+- Sombras negras pesadas, colores neón y bordes 100 % opacos: rompen la fluidez del vidrio dorado.
+- Paneles sólidos: todo panel deja ver el fondo.
 
 ## 9. Archivos del paquete
 
